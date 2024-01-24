@@ -1,0 +1,181 @@
+ScreenManager:
+    LoginScreen:
+        name: "login_screen"
+    SuccessScreen:
+        name: "success_screen"
+    SalesScreen:
+        name: "sales_screen"
+    PurchaseScreen:
+        name: "purchase_screen"
+
+<LoginScreen>:
+    name: "login_screen"
+    MDScreen:
+        md_bg_color: [140/255,140/255,140/255]
+        MDCard:
+            size_hint: None,None
+            size: 320,400
+            pos_hint: {"center_x":.5,"center_y":.5}
+            elevation: 15
+            md_bg_color: [50/255,60/255,70/255]
+            padding: 20
+            spacing: 30
+            orientation: "vertical"
+            MDLabel:
+                text: "LOGIN"
+                font_size: 45
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]
+            MDTextField:
+                id: username_input
+                hint_text: "Username"
+                icone_right: "account"
+                size_hint_x: .85
+                font_size: 20
+                pos_hint: {"center_x":.5}
+            MDTextField:
+                id: password_input
+                hint_text: "Password"
+                icone_right: "eye_off"
+                size_hint_x: .85
+                font_size: 20
+                pos_hint: {"center_x":.5}
+                password: True
+            BoxLayout:
+                size_hint: .85, None
+                width: "30dp"
+                height: "30dp"
+                pos_hint: {"center_x":.5,"center_y":0.5}
+                MDCheckbox:
+                    id: check
+                    size_hint: None,None
+                    width: "30dp"
+                    height: "30dp"
+                    on_press: 
+                        password_input.password = False if password_input.password == True else True
+                        password_input.icon_right = "eye" if password_input.icon_right == "eye_off" else "eye_off"
+                MDLabel:
+                    text: "[ref=Show Password]Show Password[/ref]"
+                    markup: True
+            BoxLayout:
+                size_hint: .85, None
+                height: "30dp"
+                pos_hint: {"center_x":.5,"center_y":0.5}
+                spacing: "5dp"
+                MDRaisedButton:
+                    text: "Login"
+                    font_size: "22dp"
+                    size_hint_x: 1
+                    spacing: 10
+                    on_press: app.on_login(username_input.text, password_input.text)
+                MDRaisedButton:
+                    text: "Cancel"
+                    font_size: "22dp"
+                    size_hint_x: 1
+                    on_press: app.stop()
+<SuccessScreen>:
+    name: "success_screen"
+    MDScreen:
+        md_bg_color: [140/255,140/255,140/255]
+        MDCard:
+            size_hint: None,None
+            size: 320,320
+            pos_hint: {"center_x":.5,"center_y":.5}
+            elevation: 15
+            md_bg_color: [50/255,60/255,70/255]
+            padding: 20
+            spacing: 30
+            orientation: "vertical"
+            MDLabel:
+                text: "Welcome To Link Solution"
+                font_size: 20
+                halign: "center"
+                #pos_hint: {"center_x":.5,"center_y":0.9}
+            MDRaisedButton:
+                text: "Sales"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                spacing: 10
+                on_press: app.on_press_sales("sales_screen")
+            MDRaisedButton:
+                text: "Purcahse"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                on_press: app.on_press_purchase("purchase_screen")
+<SalesScreen>:
+    name: "sales_screen"
+    MDScreen:
+        md_bg_color: [140/255,140/255,140/255]
+        MDCard:
+            size_hint: None,None
+            size: 320,320
+            pos_hint: {"center_x":.5,"center_y":.5}
+            elevation: 15
+            md_bg_color: [50/255,60/255,70/255]
+            padding: 20
+            spacing: 30
+            orientation: "vertical"
+            MDLabel:
+                text: "Sales"
+                font_size: 20
+                halign: "center"
+                #pos_hint: {"center_x":.5,"center_y":0.9}
+            MDRaisedButton:
+                text: "Sales Order"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                spacing: 10
+                #on_press: app.on_press_sales("sales_screen")
+            MDRaisedButton:
+                text: "Sales Challan"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                #on_press: app.stop()
+            MDRaisedButton:
+                text: "Sales Invoice"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                #on_press: app.stop()
+<PurchaseScreen>:
+    name: "purchase_screen"
+    MDScreen:
+        md_bg_color: [140/255,140/255,140/255]
+        MDCard:
+            size_hint: None,None
+            size: 320,320
+            pos_hint: {"center_x":.5,"center_y":.5}
+            elevation: 15
+            md_bg_color: [50/255,60/255,70/255]
+            padding: 20
+            spacing: 30
+            orientation: "vertical"
+            MDLabel:
+                text: "Purchase"
+                font_size: 20
+                halign: "center"
+                #pos_hint: {"center_x":.5,"center_y":0.9}
+            MDRaisedButton:
+                text: "Purchase Order"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                spacing: 10
+                #on_press: app.on_press_sales("sales_screen")
+            MDRaisedButton:
+                text: "Purchase Challan"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                #on_press: app.stop()
+            MDRaisedButton:
+                text: "Purchase Invoice"
+                font_size: "22dp"
+                pos_hint: {"center_x":.5,"center_y":.5}
+                size_hint_x: 1
+                #on_press: app.stop()
